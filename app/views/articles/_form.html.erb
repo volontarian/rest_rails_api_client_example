@@ -1,0 +1,35 @@
+<%= form_tag @article.id ? article_path(@article.id) : articles_path, method: @article.id ? :put : :post do |f| %>
+  <% if @article.errors %>
+    <div id="error_explanation">
+      <h2>Errors prohibited this article from being saved:</h2>
+
+      <ul>
+    <% @article.errors.each do |key,errors| %>
+      <% errors.each do |error| %>
+        <li><%= key %>: <%= error %></li>
+      <% end %>
+    <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag 'article[title]', 'Title *' %><br />
+    <%= text_field_tag 'article[title]', @article.title %>
+  </div>
+  <div class="field">
+    <%= label_tag 'article[description]', 'Description *' %><br />
+    <%= text_area_tag 'article[description]', @article.description %>
+  </div>
+  <div class="field">
+    <%= label_tag 'article[published_at]', 'Published at *' %><br />
+    <%= text_field_tag 'article[published_at]', @article.published_at %>
+  </div>
+  <div class="field">
+    <%= label_tag 'article[category_names]', 'Categories' %><br />
+    <%= text_field_tag 'article[category_names]', @article.category_names, size: '40' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

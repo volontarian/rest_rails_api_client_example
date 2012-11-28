@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @article.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= raw @article.description %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%= Time.parse(@article.published_at).strftime('%d.%m.%Y %H:%M:%S') %>
+</p>
+
+<p>
+  <b>Categories:</b>
+  <%= @article.category_names.join(', ') %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article.id) %> | 
+<%= link_to 'Delete', article_path(@article.id), method: :delete %> | 
+<%= link_to 'Back', articles_path %>

@@ -1,0 +1,23 @@
+<h1>Listing articles</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Published at</th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= link_to article.title, article_path(article.id) %></td>
+    <td><%= truncate(strip_tags(article.description)) %></td>
+    <td><%= Time.parse(article.published_at).strftime('%d.%m.%Y %H:%M:%S') %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @articles %>
+
+<p>
+  <%= link_to 'New Article', new_article_path %>
+</p>
