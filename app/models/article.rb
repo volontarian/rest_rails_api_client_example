@@ -1,7 +1,7 @@
 class Article
   include HTTParty
   
-  base_uri 'http://localhost:3000/api'
+  base_uri 'http://localhost:3001/api'
   basic_auth 'root', 'secret'
   headers 'Accept' => 'application/vnd.example.v1'
   format :json
